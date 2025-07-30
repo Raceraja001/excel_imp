@@ -1,0 +1,181 @@
+.column-mapping {
+  background-color: transparent;
+  color: var(--text-primary);
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: left;
+  border: none;
+}
+
+.mapping-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.schema-selector label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.schema-selector select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  min-width: 200px;
+}
+
+.mapping-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 12px;
+  color: #666;
+}
+
+.mapping-stats span {
+  margin: 2px 0;
+}
+
+.mapping-table {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.mapping-header-row {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 1fr;
+  background-color: #f5f5f5;
+  font-weight: bold;
+  padding: 12px;
+  border-bottom: 2px solid #ddd;
+}
+
+.mapping-row {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 1fr;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+}
+
+.mapping-row:hover {
+  background-color: #f9f9f9;
+}
+
+.excel-column strong {
+  color: #1976D2;
+}
+
+.sample-data {
+  font-family: monospace;
+  font-size: 12px;
+  color: #666;
+  background-color: #f8f8f8;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.target-field select {
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.field-info {
+  text-align: center;
+}
+
+.field-type {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.field-type.text {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.field-type.number {
+  background-color: #e8f5e8;
+  color: #388e3c;
+}
+
+.field-type.email {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+.field-type.date {
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.required {
+  color: #d32f2f;
+  margin-left: 4px;
+}
+
+.mapping-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.cancel-btn {
+  padding: 10px 20px;
+  background-color: #757575;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.cancel-btn:hover {
+  background-color: #616161;
+}
+
+.import-btn {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.import-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.import-btn:hover:not(:disabled) {
+  background-color: #45a049;
+}
+
+.warning {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ffeaa7;
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+}

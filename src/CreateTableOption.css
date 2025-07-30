@@ -1,0 +1,172 @@
+.create-table-option {
+  background-color: transparent;
+  color: var(--text-primary);
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: left;
+  border: none;
+}
+
+.table-config {
+  margin: 20px 0;
+}
+
+.config-row {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.config-row label {
+  width: 120px;
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+.table-name-input,
+.table-description-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.table-name-input:focus,
+.table-description-input:focus {
+  outline: none;
+  border-color: #FF9800;
+  box-shadow: 0 0 5px rgba(255, 152, 0, 0.3);
+}
+
+.field-preview {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.field-preview h4 {
+  margin-top: 0;
+  color: #495057;
+}
+
+.field-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.field-item {
+  display: grid;
+  grid-template-columns: 2fr auto 2fr 1fr;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: white;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+  font-size: 13px;
+}
+
+.field-original {
+  font-weight: bold;
+  color: #495057;
+}
+
+.field-arrow {
+  color: #6c757d;
+  font-size: 16px;
+  text-align: center;
+}
+
+.field-name {
+  font-family: monospace;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.field-type {
+  text-align: center;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.field-type.text {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.field-type.number {
+  background-color: #e8f5e8;
+  color: #388e3c;
+}
+
+.field-type.email {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+.field-type.date {
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.create-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.cancel-btn {
+  padding: 10px 20px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.cancel-btn:hover {
+  background-color: #5a6268;
+}
+
+.create-btn {
+  padding: 10px 20px;
+  background-color: #FF9800;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.create-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.create-btn:hover:not(:disabled) {
+  background-color: #F57C00;
+}
+
+.create-info {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #ffeaa7;
+  margin-top: 15px;
+}
+
+.create-info p {
+  margin: 5px 0;
+  font-size: 13px;
+}
