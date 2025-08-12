@@ -32,7 +32,9 @@ function ColumnMapping({ fileInfo, onMappingComplete, onCancel }) {
     
     // Try to auto-match columns by name similarity
     fileInfo.columns.forEach(excelCol => {
-      const normalizedExcelCol = excelCol.toLowerCase().replace(/[^a-z0-9]/g, '');
+      // Get column name from enhanced or legacy format
+      const colName = typeof excelCol === 'object' ? excelCol.name : excelCol;
+      const normalizedExcelCol = colName.toLowerCase().replace(/[^a-z0-9]/g, '');
       
       const matchedField = schema.fields.find(field => {
         const normalizedFieldName = field.field_name.toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -45,7 +47,7 @@ function ColumnMapping({ fileInfo, onMappingComplete, onCancel }) {
       });
       
       if (matchedField) {
-        mappings[excelCol] = matchedField.field_name;
+        mappings[colName] = matchedField.field_name;
       }
     });
     
@@ -101,7 +103,7 @@ function ColumnMapping({ fileInfo, onMappingComplete, onCancel }) {
     
     return {
       mappedColumns: mappedCount,
-      totalColumns: fileInfo.columns.length,
+      totalColumns: fileInfo.columns ? fileInfo.columns.length : 0,
       requiredFieldsMapped: mappedRequiredFields.length,
       totalRequiredFields: requiredFields.length
     };
@@ -150,16 +152,19 @@ function ColumnMapping({ fileInfo, onMappingComplete, onCancel }) {
             <div className="field-info-header">Field Info</div>
           </div>
           
-          {fileInfo.columns.map(excelCol => {
-            const sampleData = fileInfo.preview.length > 0 ? 
-              fileInfo.preview[0][excelCol] : 'No data';
-            const mappedField = columnMappings[excelCol];
+          {(fileInfo.columns || []).map((excelCol, index) => {
+            // Get column name from enhanced or legacy format
+            const colName = typeof excelCol === 'object' ? excelCol.name : excelCol;
+            const previewData = fileInfo.preview_data || fileInfo.preview || [];
+            const sampleData = previewData.length > 0 ? 
+              previewData[0][colName] : 'No data';
+            const mappedField = columnMappings[colName];
             const fieldInfo = selectedSchema.fields.find(f => f.field_name === mappedField);
             
             return (
-              <div key={excelCol} className="mapping-row">
+              <div key={index} className="mapping-row">
                 <div className="excel-column">
-                  <strong>{excelCol}</strong>
+                  <strong>{colName}</strong>
                 </div>
                 
                 <div className="sample-data">
@@ -170,7 +175,7 @@ function ColumnMapping({ fileInfo, onMappingComplete, onCancel }) {
                 <div className="target-field">
                   <select
                     value={mappedField || ''}
-                    onChange={(e) => handleMappingChange(excelCol, e.target.value)}
+                    onChange={(e) => handleMappingChange(colName, e.target.value)}
                   >
                     <option value="">-- Skip this column --</option>
                     {selectedSchema.fields.map(field => (

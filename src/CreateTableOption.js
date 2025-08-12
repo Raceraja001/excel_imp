@@ -12,16 +12,19 @@ function CreateTableOption({ fileInfo, onTableCreated, onCancel }) {
   React.useEffect(() => {
     if (fileInfo) {
       const fields = fileInfo.columns.map((col, index) => {
+        // Get column name from enhanced or legacy format
+        const colName = typeof col === 'object' ? col.name : col;
         // Clean column name for database field
-        const fieldName = col.toLowerCase()
+        const fieldName = colName.toLowerCase()
           .replace(/[^a-zA-Z0-9_]/g, '_')
           .replace(/_+/g, '_')
           .replace(/^_|_$/g, '') || `field_${index + 1}`;
         
         // Guess field type from sample data
         let fieldType = 'text';
-        if (fileInfo.preview.length > 0) {
-          const sampleValue = fileInfo.preview[0][col];
+        const previewData = fileInfo.preview_data || fileInfo.preview || [];
+        if (previewData.length > 0) {
+          const sampleValue = previewData[0][colName];
           if (typeof sampleValue === 'number') {
             fieldType = 'number';
           } else if (typeof sampleValue === 'string' && sampleValue.includes('@')) {
@@ -30,9 +33,9 @@ function CreateTableOption({ fileInfo, onTableCreated, onCancel }) {
         }
         
         return {
-          originalName: col,
+          originalName: colName,
           fieldName: fieldName,
-          displayName: col,
+          displayName: colName,
           fieldType: fieldType
         };
       });
